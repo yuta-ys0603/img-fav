@@ -80,6 +80,4 @@ test:
 #
 production:
   <<: *default
-  database: img-fav_production
-  username: img-fav
-  password: <%= ENV['IMG-FAV_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
