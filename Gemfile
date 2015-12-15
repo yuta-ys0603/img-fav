@@ -48,3 +48,12 @@ gem "twitter-bootstrap-rails"
 group :production do
   gem 'rails_12factor'
 end
+group :development,:test do
+  gem "rspec-rails", "~> 2.14.0"
+  gem "factory_girl_rails", "~> 4.2.1"
+end
+
+group :test do
+  gem "faker", "~> 1.5.0"
+  gem "database_cleaner", "~> 1.0.1"
+end
