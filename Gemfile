@@ -48,3 +48,5 @@ gem "twitter-bootstrap-rails"
 group :production do
   gem 'rails_12factor'
 end
+gem 'paperclip'
+gem 'aws-sdk', '< 2.0'
