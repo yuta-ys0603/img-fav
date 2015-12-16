@@ -48,6 +48,8 @@ gem "twitter-bootstrap-rails"
 group :production do
   gem 'rails_12factor'
 end
+gem 'paperclip'
+gem 'aws-sdk', '< 2.0'
 group :development,:test do
   gem "rspec-rails", "~> 2.14.0"
   gem "factory_girl_rails", "~> 4.2.1"

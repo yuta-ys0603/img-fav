@@ -1,0 +1,4 @@
+bucket: 'study-img-fav'
+access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>
+secret_access_key: <%= ENV['AWS_ACCESS_KEY_SECRET'] %>
+s3_host_name: 's3-ap-northeast-1.amazonaws.com'
