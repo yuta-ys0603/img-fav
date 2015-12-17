@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'sessions/login', to: 'sessions#login'
+  post 'sessions/login', to: 'sessions#authenticate'
+  get 'sessions/logout', to: 'sessions#logout'
   resources :users
   resources :images
   # The priority is based upon order of creation: first created -> highest priority.

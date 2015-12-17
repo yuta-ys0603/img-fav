@@ -1,0 +1,19 @@
+<%if notice %>
+    <p id="notice"><%= notice %></p>
+<%end%>
+<%if alert %>
+    <p id="error_explanation"><%= alert %></p>
+<%end%>
+<%= form_for :user, url: sessions_login_path do |f| %>
+    <div class="field">
+        <%= f.label :name %><br>
+        <%= f.text_field :name %>
+    </div>
+    <div class="field">
+        <%= f.label :password %><br>
+        <%= f.password_field :password %>
+    </div>
+    <div class="actions">
+        <%= f.submit 'login' %>
+    </div>
+<% end %>

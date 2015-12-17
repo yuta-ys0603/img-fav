@@ -20,7 +20,6 @@ require 'rails_helper'
 # that an instance is receiving a specific message.
 
 describe UsersController do
-
   describe "GET index" do
     it "assigns all users as @users" do
       user = FactoryGirl.create(:user)
@@ -39,13 +38,6 @@ describe UsersController do
     it "assigns a new user as @user" do
       get :new
       expect(assigns(:user)).to be_a_new(User)
-    end
-  end
-  describe "GET edit" do
-    it "assigns the requested user as @user" do
-      user = FactoryGirl.create(:user)
-      get :edit, id: user
-      expect(assigns(:user)).to eq user
     end
   end
   describe "POST create" do
@@ -72,47 +64,67 @@ describe UsersController do
       expect(response).to render_template :new
     end
   end
-
-  describe "PUT update" do
+  context "login user" do
     before :each do
       @user = FactoryGirl.create(:user, name: "Fuga")
+      session[:user_id] = @user.id
     end
-    describe "with valid params" do
-      it "updates the requested user" do
-        put :update, id: @user, user: FactoryGirl.attributes_for(:user, name: "Hoge")
-        @user.reload
-        expect(@user.name).to eq "Hoge"
-      end
-      it "redirects to the user" do
-        put :update, id: @user, user: FactoryGirl.attributes_for(:user)
-        expect(response).to redirect_to @user
+    describe "GET edit" do
+      it "assigns the requested user as @user" do
+        get :edit, id: @user
+        expect(assigns(:user)).to eq @user
       end
     end
-    describe "with invalid params" do
-      it "assigns the user as @user" do
-        put :update, id: @user, user: FactoryGirl.attributes_for(:user, name: "")
-        @user.reload
-        expect(@user.name).to eq "Fuga"
+    describe "DELETE destroy" do
+      it "destroys the requested user" do
+        expect{
+          delete :destroy, id: @user
+        }.to change(User, :count).by(-1)
       end
-      it "re-renders the 'edit' template" do
-        put :update, id: @user, user: FactoryGirl.attributes_for(:user, name: "")
-        expect(response).to render_template :edit
+      it "redirects to the users list" do
+        delete :destroy, id: @user
+        expect(response).to redirect_to users_url
+      end
+    end
+    describe "PUT update" do
+      describe "with valid params" do
+        it "updates the requested user" do
+          put :update, id: @user, user: FactoryGirl.attributes_for(:user, name: "Hoge")
+          @user.reload
+          expect(@user.name).to eq "Hoge"
+        end
+        it "redirects to the user" do
+          put :update, id: @user, user: FactoryGirl.attributes_for(:user)
+          expect(response).to redirect_to @user
+        end
+      end
+      describe "with invalid params" do
+        it "assigns the user as @user" do
+          put :update, id: @user, user: FactoryGirl.attributes_for(:user, name: "")
+          @user.reload
+          expect(@user.name).to eq "Fuga"
+        end
+        it "re-renders the 'edit' template" do
+          put :update, id: @user, user: FactoryGirl.attributes_for(:user, name: "")
+          expect(response).to render_template :edit
+        end
       end
     end
   end
-
-  describe "DELETE destroy" do
-    before :each do
-      @user = FactoryGirl.create(:user)
+  context 'logout user' do
+    describe "GET edit" do
+      it "redirects to login path" do
+        user = FactoryGirl.create(:user)
+        get :edit, id: user
+        expect(response).to redirect_to sessions_login_path
+      end
     end
-    it "destroys the requested user" do
-      expect{
-        delete :destroy, id: @user
-      }.to change(User, :count).by(-1)
-    end
-    it "redirects to the users list" do
-      delete :destroy, id: @user
-      expect(response).to redirect_to users_url
+    describe "DELETE destroy" do
+      it "redirects to login path" do
+        user = FactoryGirl.create(:user)
+        delete :destroy, id: user
+        expect(response).to redirect_to sessions_login_path
+      end
     end
   end
 end
