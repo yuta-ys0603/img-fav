@@ -24,7 +24,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -51,11 +51,13 @@ end
 gem 'paperclip'
 gem 'aws-sdk', '< 2.0'
 group :development,:test do
-  gem "rspec-rails", "~> 2.14.0"
-  gem "factory_girl_rails", "~> 4.2.1"
+  gem "rspec-rails", "~> 3.4.0"
+  gem "rspec-activemodel-mocks"
+  gem "rspec-collection_matchers"
+  gem "factory_girl_rails", "~> 4.5.0"
 end
 
 group :test do
   gem "faker", "~> 1.5.0"
-  gem "database_cleaner", "~> 1.0.1"
+  gem "database_cleaner", "~> 1.5.1"
 end
