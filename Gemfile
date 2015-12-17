@@ -53,7 +53,6 @@ gem 'aws-sdk', '< 2.0'
 group :development,:test do
   gem "rspec-rails", "~> 3.4.0"
   gem "rspec-activemodel-mocks"
-  gem "rspec-collection_matchers"
   gem "factory_girl_rails", "~> 4.5.0"
 end
 
