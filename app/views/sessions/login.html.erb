@@ -1,19 +1,23 @@
 <%if notice %>
-    <p id="notice"><%= notice %></p>
+    <div class="row">
+        <p id="notice"><%= notice %></p>
+    </div>
 <%end%>
 <%if alert %>
-    <p id="error_explanation"><%= alert %></p>
-<%end%>
-<%= form_for :user, url: sessions_login_path do |f| %>
-    <div class="field">
-        <%= f.label :name %><br>
-        <%= f.text_field :name %>
+    <div class="row">
+        <p id="error_explanation"><%= alert %></p>
     </div>
-    <div class="field">
+<%end%>
+<%= form_for :user, url: sessions_login_path, class: "form" do |f| %>
+    <div class="field form-group">
+        <%= f.label :name %><br>
+        <%= f.text_field :name, class: "form-control" %>
+    </div>
+    <div class="field form-group">
         <%= f.label :password %><br>
-        <%= f.password_field :password %>
+        <%= f.password_field :password, class: "form-control" %>
     </div>
     <div class="actions">
-        <%= f.submit 'login' %>
+        <%= f.submit 'ログイン', class: "btn btn-primary"  %>
     </div>
 <% end %>
