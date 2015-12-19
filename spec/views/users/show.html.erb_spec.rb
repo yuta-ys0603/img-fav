@@ -8,6 +8,6 @@ describe "users/show" do
   it "renders attributes in <p>" do
     render
     # Run the generator again with the --webrat flag if you want to use webrat matchers
-    rendered.should match(@user.name)
+    expect(rendered).to match(@user.name)
   end
 end
