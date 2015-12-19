@@ -1,13 +1,17 @@
+<div class="row">
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @image.title %>
-</p>
-<%= image_tag(@image.authenticated_image_url(:large)) if @image.data.present? %>
+</div>
 <% if @current_user %>
-    <%= link_to 'Favorite', {controller: 'favorites', action: 'favorite', favorite:{image_id: @image} }, :method => :post %>
-    <%= link_to 'UnFavorite', {controller: 'favorites', action: 'unfavorite', favorite:{image_id: @image} }, :method => :delete %>
+<div class="row">
+    <%= link_to 'Destroy', @image, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger pull-right" %>
+    <%= link_to 'Edit', edit_image_path(@image), class: "btn btn-warning pull-right" %>
+</div>
 <% end %>
-<%= link_to 'Edit', edit_image_path(@image) %> |
-<%= link_to 'Back', images_path %>
+<div class="row">
+    <h3>Title: <%= @image.title %></h3>
+    <%= image_tag(@image.authenticated_image_url(:large)) if @image.data.present? %>
+</div>
+<% if @current_user %>
+    <%= link_to 'Favorite', {controller: 'favorites', action: 'favorite', favorite:{image_id: @image} }, :method => :post, class:"btn btn-primary" %>
+    <%= link_to 'UnFavorite', {controller: 'favorites', action: 'unfavorite', favorite:{image_id: @image} }, :method => :delete, class: "btn btn-danger"%>
+<% end %>
