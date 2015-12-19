@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'images#index'
   get 'sessions/login', to: 'sessions#login'
   post 'sessions/login', to: 'sessions#authenticate'
   get 'sessions/logout', to: 'sessions#logout'
