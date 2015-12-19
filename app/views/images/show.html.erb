@@ -5,6 +5,9 @@
   <%= @image.title %>
 </p>
 <%= image_tag(@image.authenticated_image_url(:large)) if @image.data.present? %>
-
+<% if @current_user %>
+    <%= link_to 'Favorite', {controller: 'favorites', action: 'favorite', favorite:{image_id: @image} }, :method => :post %>
+    <%= link_to 'UnFavorite', {controller: 'favorites', action: 'unfavorite', favorite:{image_id: @image} }, :method => :delete %>
+<% end %>
 <%= link_to 'Edit', edit_image_path(@image) %> |
 <%= link_to 'Back', images_path %>

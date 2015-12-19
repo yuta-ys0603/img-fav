@@ -22,6 +22,7 @@ class Image < ActiveRecord::Base
                       :url  => "#{ActionController::Base.relative_url_root}/:attachment/:updated_at/:id/:style.:extension"
   end
   validates_attachment_content_type :data, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+  has_many :favorites
 
   def authenticated_image_url(style)
     if Rails.env == "production"

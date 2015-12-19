@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151217003324) do
+ActiveRecord::Schema.define(version: 20151217071153) do
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "favorites", ["image_id"], name: "index_favorites_on_image_id", using: :btree
+  add_index "favorites", ["user_id"], name: "index_favorites_on_user_id", using: :btree
 
   create_table "images", force: :cascade do |t|
     t.string   "title"
@@ -32,4 +42,6 @@ ActiveRecord::Schema.define(version: 20151217003324) do
 
   add_index "users", ["name"], name: "index_users_on_name", unique: true, using: :btree
 
+  add_foreign_key "favorites", "images"
+  add_foreign_key "favorites", "users"
 end
