@@ -25,13 +25,13 @@ ActiveRecord::Schema.define(version: 20151219051019) do
 
   create_table "images", force: :cascade do |t|
     t.string   "title"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.string   "data_file_name"
     t.string   "data_content_type"
     t.integer  "data_file_size"
     t.datetime "data_updated_at"
-    t.integer  "user_id",           null: false
+    t.integer  "user_id",           default: 0, null: false
   end
 
   create_table "users", force: :cascade do |t|
