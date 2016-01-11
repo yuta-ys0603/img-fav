@@ -1,4 +1,4 @@
-describe ImagesController do
+describe ImagesController do # testの説明
   describe "GET index" do
     it "assigns all images as @images" do
       image = FactoryGirl.create(:image)
@@ -13,7 +13,7 @@ describe ImagesController do
       expect(assigns[:image]).to eq image
     end
   end
-  context "user login" do
+  context "user login" do # testの状況
     before :each do
       @user = FactoryGirl.create(:user)
       session[:user_id] = @user.id
@@ -25,6 +25,19 @@ describe ImagesController do
       end
     end
     describe "GET edit" do
+
+      #it "current user equals image user" do # add
+      #end
+      #context "current user differ from image user" do # add
+       # before do
+        #  image = FactoryGirl.create(:imgae)
+        #end
+        #it "redirect to index url" do
+         # expect(response).to redirect_to "/"
+        #end
+     # end
+
+
     end
     context "with valid value" do
       describe "POST create" do

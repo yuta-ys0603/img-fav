@@ -1,3 +1,4 @@
 <h1>Editing Image</h1>
-
-<%= render 'form' %>
+<% if @current_user.id == @image.user.id %>
+  <%= render 'form' %>
+<% end %>

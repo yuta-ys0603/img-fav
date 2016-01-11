@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   protected
   def set_login_user
     @current_user = User.find_by(id: session[:user_id]) if session[:user_id]
+    # ‚³‚«‚Éif•¶‚ð•]‰¿‚·‚é(Œã’u‚Ìif)‚»‚Ì‚ ‚Æif‘O‚ð‚â‚é@”½‘Î‚Ìunless‚à‚ ‚è
+    # session‚Ìuser_id‚ðŽg‚Á‚Ä@current_user‚Éî•ñ‚ð‹l‚ß‚é
   end
   def login?
     if !session.has_key? :user_id
