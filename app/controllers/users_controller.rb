@@ -20,6 +20,13 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    respond_to do |format| #add
+      if @current_user.id != @user.id
+        format.html{redirect_to @user, notice: 'Can not edit.'}
+      else
+        format.html{render :edit }
+      end
+    end
   end
 
   # POST /users
