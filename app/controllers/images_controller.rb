@@ -20,6 +20,13 @@ class ImagesController < ApplicationController
 
   # GET /images/1/edit
   def edit
+    respond_to do |format|
+      if @current_user.id != @image.user.id
+        format.html{redirect_to '/', notice: 'Can not edit.'}
+      else
+        format.html{render :edit }
+      end
+    end
   end
 
   # POST /images
