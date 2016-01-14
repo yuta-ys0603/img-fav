@@ -25,19 +25,11 @@ describe ImagesController do # testの説明
       end
     end
     describe "GET edit" do
-
-      #it "current user equals image user" do # add
+    #  it "other user edit" do # add
+     #  image = FactoryGirl.create(:image)
+      # get :edit, id: image.id
+       #expect(response).to redirect_to root_path
       #end
-      #context "current user differ from image user" do # add
-       # before do
-        #  image = FactoryGirl.create(:imgae)
-        #end
-        #it "redirect to index url" do
-         # expect(response).to redirect_to "/"
-        #end
-     # end
-
-
     end
     context "with valid value" do
       describe "POST create" do
